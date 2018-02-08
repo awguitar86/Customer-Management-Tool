@@ -8,5 +8,5 @@ export const getCustomerList = () => {
 
 export const postCustomer = (customer) => {
     axios.post(apiURL, customer)
-        .then( res => res);
+        .then( res => res.data);
 }
