@@ -4,6 +4,7 @@ import './App.css';
 import Header from './Header/Header';
 import List from './List/List';
 import Workspace from './Workspace/Workspace';
+import { getCustomerList } from '../customers';
 
 
 class App extends Component {
@@ -16,6 +17,13 @@ class App extends Component {
       currentCustomer: null
     }
 
+  }
+
+  componentWillMount(){
+    getCustomerList()
+      .then( res => {
+        this.setState({ customerList: res });
+      })
   }
 
   render() {
