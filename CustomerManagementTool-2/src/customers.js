@@ -12,6 +12,11 @@ export const postCustomer = (customer) => {
 }
 
 export const getCustomer = (id) => {
-    axios.get(apiURL+id)
+    axios.get(apiURL + id)
         .then( res =>  res.data);
+}
+
+export const updateCustomer = (id, obj) => {
+    axios.patch(apiURL + id, obj)
+        .then( res => res.data);
 }
