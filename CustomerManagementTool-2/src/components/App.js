@@ -20,6 +20,7 @@ class App extends Component {
 
     this.startNewcustomer = this.startNewcustomer.bind(this);
     this.createCustomer = this.createCustomer.bind(this);
+    this.selectCustomer = this.selectCustomer.bind(this);
 
   }
 
@@ -45,9 +46,19 @@ class App extends Component {
           .then( res => {
             this.setState({ 
               initialLoad: true,
-              crearting: false,
+              creating: false,
               customerList: res })
           })
+      })
+  }
+
+  selectCustomer(id){
+    getCustomer(id)
+      .then( res => {
+        this.setState({
+          currentCustomer: res,
+          initialLoad: false
+        })
       })
   }
 
