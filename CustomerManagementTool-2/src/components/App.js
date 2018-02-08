@@ -4,7 +4,7 @@ import './App.css';
 import Header from './Header/Header';
 import List from './List/List';
 import Workspace from './Workspace/Workspace';
-import { getCustomerList, postCustomer } from '../customers';
+import { getCustomerList, postCustomer, getCustomer } from '../customers';
 
 
 
