@@ -19,7 +19,7 @@ class App extends Component {
 
   }
 
-  componentWillMount(){
+  componentDidMount(){
     getCustomerList()
       .then( res => {
         this.setState({ customerList: res });
