@@ -4,7 +4,8 @@ import './App.css';
 import Header from './Header/Header';
 import List from './List/List';
 import Workspace from './Workspace/Workspace';
-import { getCustomerList } from '../customers';
+import { getCustomerList, postCustomer } from '../customers';
+
 
 
 class App extends Component {
@@ -17,6 +18,8 @@ class App extends Component {
       currentCustomer: null
     }
 
+    this.startNewcustomer = this.startNewcustomer.bind(this);
+
   }
 
   componentDidMount(){
@@ -24,6 +27,14 @@ class App extends Component {
       .then( res => {
         this.setState({ customerList: res });
       })
+  }
+
+  startNewcustomer(){
+    this.setState({ 
+      creating: true, 
+      initialLoad: false, 
+      currentCustomer: null 
+    })
   }
 
   render() {
@@ -35,6 +46,7 @@ class App extends Component {
             this.state.customerList ?
             <List
               customerList={this.state.customerList || []}
+              startNewcustomer={this.startNewcustomer}
               />
             : null
           }
