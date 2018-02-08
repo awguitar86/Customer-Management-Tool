@@ -4,7 +4,7 @@ import './App.css';
 import Header from './Header/Header';
 import List from './List/List';
 import Workspace from './Workspace/Workspace';
-import { getCustomerList, postCustomer, getCustomer, updateCustomer } from '../customers';
+import { getCustomerList, postCustomer, getCustomer, updateCustomer, deleteCustomer } from '../customers';
 
 
 
@@ -22,6 +22,7 @@ class App extends Component {
     this.createCustomer = this.createCustomer.bind(this);
     this.selectCustomer = this.selectCustomer.bind(this);
     this.saveEdit = this.saveEdit.bind(this);
+    this.removeCustomer = this.removeCustomer.bind(this);
 
   }
 
@@ -76,6 +77,20 @@ class App extends Component {
       })
   }
 
+  removeCustomer(id){
+    deleteCustomer(id)
+      .then( res => {
+        getCustomerList()
+          .then( list => {
+            this.setState({
+              customerList: list,
+              currentCustomer: null,
+              initialLoad: true
+            })
+          })
+      })
+  }
+
   render() {
     return (
       <div>
@@ -94,6 +109,7 @@ class App extends Component {
                     currentCustomer={this.state.currentCustomer}
                     creating={this.state.creating}
                     saveEdit={this.saveEdit}
+                    removeCustomer={this.removeCustomer}
                   />
         </div>
       </div>
