@@ -10,3 +10,8 @@ export const postCustomer = (customer) => {
     axios.post(apiURL, customer)
         .then( res => res.data);
 }
+
+export const getCustomer = (id) => {
+    axios.get(apiURL+id)
+        .then( res =>  res.data);
+}
