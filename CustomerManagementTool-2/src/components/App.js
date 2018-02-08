@@ -19,6 +19,7 @@ class App extends Component {
     }
 
     this.startNewcustomer = this.startNewcustomer.bind(this);
+    this.createCustomer = this.createCustomer.bind(this);
 
   }
 
@@ -35,6 +36,19 @@ class App extends Component {
       initialLoad: false, 
       currentCustomer: null 
     })
+  }
+
+  createCustomer(customer) {
+    postCustomer(customer)
+      .then( res => {
+        getCustomerList()
+          .then( res => {
+            this.setState({ 
+              initialLoad: true,
+              crearting: false,
+              customerList: res })
+          })
+      })
   }
 
   render() {
